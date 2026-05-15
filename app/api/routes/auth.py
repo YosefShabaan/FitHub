@@ -5,6 +5,8 @@ from app.db.database import SessionLocal
 from app.models.user import User
 from app.schemas.user import UserCreate, UserLogin
 
+from app.services.auth_service import get_current_user
+
 from app.core.security import (
     hash_password,
     verify_password
@@ -95,3 +97,12 @@ def login(
         "access_token": token,
         "token_type": "bearer"
     }
+    
+    @router.get("/me")
+    def get_me(
+        current_user: str = Depends(get_current_user)
+    ):
+
+        return {
+            "username": current_user
+        }
