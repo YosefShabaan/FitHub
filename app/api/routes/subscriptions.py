@@ -94,4 +94,4 @@ def remove_subscription(
     result = delete_subscription(db, sub_id)
     if not result:
         raise HTTPException(status_code=404, detail="Subscription not found")
-          return result
+     return result
