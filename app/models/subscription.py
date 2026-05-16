@@ -4,7 +4,7 @@ from datetime import date
 from app.db.database import Base
 
 class Subscription(Base):
-    _tablename_ = "subscriptions"
+    __tablename__ = "subscriptions"
 
     id = Column(Integer, primary_key=True, index=True)
     member_id = Column(Integer, ForeignKey("members.id"), nullable=False)

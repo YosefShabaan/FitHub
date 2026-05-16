@@ -1,0 +1,241 @@
+/* =============================
+   FitHub — Members & Subscriptions Pages
+   ============================= */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 2px solid var(--gray-mid);
+  border-radius: 6px;
+  padding: 10px 16px;
+  flex: 1;
+  max-width: 380px;
+  transition: border-color 0.2s;
+}
+
+.search-box:focus-within {
+  border-color: var(--yellow);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-dark);
+  flex: 1;
+}
+
+.search-box input::placeholder { color: #bbb; }
+
+.search-icon { color: #bbb; font-size: 16px; }
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 12px 24px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--yellow-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(245,197,24,0.3);
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 36px;
+  width: 480px;
+  max-width: 95vw;
+  animation: popIn 0.25s ease;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.modal-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  color: var(--text-dark);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select {
+  border: 2px solid var(--gray-mid);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text-dark);
+  background: var(--gray-light);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--yellow);
+  background: var(--white);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-cancel {
+  flex: 1;
+  background: var(--gray-light);
+  color: var(--text-muted);
+  border: 2px solid var(--gray-mid);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: var(--gray-mid);
+  color: var(--text-dark);
+}
+
+.btn-submit {
+  flex: 2;
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 18px;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+}
+
+.btn-submit:hover { background: var(--yellow-dark); }
+
+/* ── Action Buttons ── */
+.action-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit {
+  background: #fff8e1;
+  color: #b8860b;
+  border: 1px solid #f5c518;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-edit:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.btn-delete {
+  background: #fff5f5;
+  color: var(--danger);
+  border: 1px solid #fed7d7;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background: var(--danger);
+  color: var(--white);
+}
+
+/* ── Empty State ── */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty-state p { font-size: 15px; }
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--black);
+  color: var(--yellow);
+  padding: 14px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 999;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+  font-size: 16px;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}

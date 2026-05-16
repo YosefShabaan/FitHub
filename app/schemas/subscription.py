@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import date
 from typing import Optional
 
@@ -13,12 +13,11 @@ class SubscriptionUpdate(BaseModel):
     status: Optional[str] = None
 
 class SubscriptionResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     member_id: int
     plan: str
     start_date: date
     end_date: date
     status: str
-
-    class Config:
-        from_attributes = True

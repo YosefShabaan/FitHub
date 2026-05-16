@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitHub - Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/global.css"/>
+  <link rel="stylesheet" href="../css/dashboard.css"/>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-text">Fit<span>Hub</span></div>
+      <div class="logo-sub">Management Panel</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Main</div>
+      <a href="dashboard.html" class="nav-item active">
+        <span class="icon">DB</span> Dashboard
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="icon">MB</span> Members
+      </a>
+      <a href="subscriptions.html" class="nav-item">
+        <span class="icon">SB</span> Subscriptions
+      </a>
+      <div class="nav-section" style="margin-top:16px">Portal</div>
+      <a href="index.html" class="nav-item" target="_blank">
+        <span class="icon">GY</span> Member Portal
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="user-avatar">A</div>
+        <div>
+          <div class="user-name" id="username-display">Admin</div>
+          <div class="user-role">Administrator</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="logout()">LOGOUT</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="page-title">Dashboard</div>
+      <div class="topbar-right">
+        <div class="date-badge" id="current-date"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <section class="cards-grid">
+        <div class="stat-card">
+          <div class="card-label">Total Members</div>
+          <div class="card-value" id="total-members">0</div>
+        </div>
+        <div class="stat-card highlight">
+          <div class="card-label">Active Subscriptions</div>
+          <div class="card-value" id="active-subs">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="card-label">Expired Subscriptions</div>
+          <div class="card-value" id="expired-subs">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="card-label">Monthly Plans</div>
+          <div class="card-value" id="monthly-plans">0</div>
+        </div>
+      </section>
+
+      <section style="margin-bottom:32px">
+        <div class="section-header">
+          <h2 class="section-title">Recent Members</h2>
+          <a class="btn-view-all" href="members.html">View All</a>
+        </div>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Joined</th>
+              </tr>
+            </thead>
+            <tbody id="recent-members-body">
+              <tr><td colspan="3" style="text-align:center;color:#bbb;padding:30px">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title">Recent Subscriptions</h2>
+          <a class="btn-view-all" href="subscriptions.html">View All</a>
+        </div>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Plan</th>
+                <th>Ends</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="recent-subs-body">
+              <tr><td colspan="4" style="text-align:center;color:#bbb;padding:30px">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
