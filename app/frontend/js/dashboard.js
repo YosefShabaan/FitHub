@@ -72,7 +72,7 @@ async function loadRecentMembers() {
         <tr>
           <td>${m.name}</td>
           <td>${m.phone}</td>
-          <td>${new Date(m.created_at).toLocaleDateString('en-US')}</td>
+          <td>${m.created_at ? new Date(m.created_at).toLocaleDateString('en-US') : 'Unknown'}</td>
         </tr>`;
     });
   } catch (e) { console.error(e); }

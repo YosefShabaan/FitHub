@@ -19,4 +19,4 @@ class MemberResponse(BaseModel):
     name: str
     phone: str
     email: Optional[str]
-    created_at: datetime
+    created_at: Optional[datetime]
