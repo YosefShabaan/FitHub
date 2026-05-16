@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitHub - Train Hard. Live Strong.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/global.css"/>
+  <link rel="stylesheet" href="../css/portal.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">Fit<span>Hub</span></div>
+    <ul class="nav-links">
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#join">Join</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="login.html">Admin Login</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">Professional Gym Management</div>
+      <h1 class="hero-title">
+        TRAIN<br/>
+        <span class="accent">HARDER.</span><br/>
+        LIVE STRONGER.
+      </h1>
+      <p class="hero-desc">
+        Join FitHub and take control of your fitness journey.
+        Flexible plans, professional trainers, and a community that pushes you further.
+      </p>
+      <div class="hero-actions">
+        <a href="#join" class="btn-join" onclick="selectPlan('monthly')">JOIN NOW</a>
+        <a href="#about" class="btn-ghost">LEARN MORE</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-lbl">Members</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-lbl">Trainers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24/7</div>
+      <div class="stat-lbl">Open</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">98%</div>
+      <div class="stat-lbl">Satisfaction</div>
+    </div>
+  </div>
+
+  <section class="plans-section" id="plans">
+    <div class="section-header">
+      <div class="section-tag">Choose Your Plan</div>
+      <h2 class="section-title">Membership Plans</h2>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Monthly</div>
+        <div class="plan-price">299<span style="font-size:24px">EGP</span></div>
+        <div class="plan-period">per month</div>
+        <ul class="plan-features">
+          <li class="plan-feature">Full gym access</li>
+          <li class="plan-feature">Locker room</li>
+          <li class="plan-feature">Group classes</li>
+          <li class="plan-feature">Cancel anytime</li>
+        </ul>
+        <a href="#join" class="btn-plan" onclick="selectPlan('monthly')">GET STARTED</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="featured-tag">BEST VALUE</div>
+        <div class="plan-name">Yearly</div>
+        <div class="plan-price">199<span style="font-size:24px">EGP</span></div>
+        <div class="plan-period">per month, billed annually</div>
+        <ul class="plan-features">
+          <li class="plan-feature">Everything in Monthly</li>
+          <li class="plan-feature">Personal trainer twice a month</li>
+          <li class="plan-feature">Nutrition plan</li>
+          <li class="plan-feature">Save 33%</li>
+        </ul>
+        <a href="#join" class="btn-plan" onclick="selectPlan('yearly')">GET STARTED</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="join-section" id="join">
+    <div class="join-layout">
+      <div class="join-copy">
+        <div class="section-tag">Become a Member</div>
+        <h2 class="section-title">Join FitHub Today</h2>
+        <p>
+          Submit your details and your membership will be created instantly.
+          The admin dashboard will show the new member and active subscription.
+        </p>
+      </div>
+
+      <form class="join-form" id="join-form">
+        <div id="join-message" class="join-message"></div>
+        <div class="form-row">
+          <label for="join-name">Full Name</label>
+          <input type="text" id="join-name" placeholder="Ahmed Ali" required/>
+        </div>
+        <div class="form-row">
+          <label for="join-phone">Phone</label>
+          <input type="tel" id="join-phone" placeholder="01012345678" required/>
+        </div>
+        <div class="form-row">
+          <label for="join-email">Email</label>
+          <input type="email" id="join-email" placeholder="ahmed@email.com"/>
+        </div>
+        <div class="form-row">
+          <label for="join-plan">Plan</label>
+          <select id="join-plan" required>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit-join" id="join-submit">CREATE MEMBERSHIP</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div>
+      <div class="section-tag">About FitHub</div>
+      <h2 class="section-title">More Than a Gym</h2>
+      <p>
+        FitHub combines gym operations, member tracking, subscriptions, and dashboard insights
+        in one simple management system.
+      </p>
+    </div>
+  </section>
+
+  <footer class="portal-footer">
+    <div class="logo">Fit<span>Hub</span></div>
+    <p>Copyright 2026 FitHub. All rights reserved.</p>
+  </footer>
+
+  <script src="../js/portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+/* =============================
+   FitHub — Member Portal Styles
+   ============================= */
+
+body {
+  background: var(--black);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 32px;
+  color: var(--yellow);
+  letter-spacing: 4px;
+}
+
+.nav-logo span { color: var(--white); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #888;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.nav-links a:hover { color: var(--yellow); }
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 60px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 50%, rgba(245,197,24,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(245,197,24,0.05) 0%, transparent 50%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 13px;
+  letter-spacing: 4px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 96px;
+  line-height: 0.9;
+  letter-spacing: 4px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.hero-title .accent { color: var(--yellow); }
+
+.hero-desc {
+  font-size: 18px;
+  color: #888;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-join {
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 18px 40px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 2px;
+}
+
+.btn-join:hover {
+  background: var(--yellow-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(245,197,24,0.25);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid #333;
+  padding: 18px 40px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-ghost:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+/* ── Stats Bar ── */
+.stats-bar {
+  background: var(--yellow);
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stats-bar .stat {
+  text-align: center;
+}
+
+.stats-bar .stat-num {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 36px;
+  color: var(--black);
+  letter-spacing: 2px;
+}
+
+.stats-bar .stat-lbl {
+  font-size: 11px;
+  color: rgba(0,0,0,0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ── Plans Section ── */
+.plans-section {
+  padding: 100px 60px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 56px;
+  letter-spacing: 3px;
+  color: var(--white);
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.plan-card {
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px;
+  padding: 36px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-card:hover {
+  border-color: var(--yellow);
+  transform: translateY(-4px);
+}
+
+.plan-card.featured {
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.plan-card.featured .plan-name,
+.plan-card.featured .plan-price,
+.plan-card.featured .plan-period,
+.plan-card.featured .plan-feature { color: var(--black); }
+
+.plan-card.featured .plan-feature::before { background: var(--black); }
+
+.featured-tag {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--black);
+  color: var(--yellow);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.plan-name {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: var(--yellow);
+  margin-bottom: 20px;
+}
+
+.plan-price {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 56px;
+  letter-spacing: 2px;
+  color: var(--white);
+  line-height: 1;
+}
+
+.plan-period {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.plan-card.featured .plan-period { color: rgba(0,0,0,0.6); }
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.plan-feature {
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.plan-feature::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--yellow);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.btn-plan {
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--yellow);
+  color: var(--yellow);
+  padding: 14px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 16px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.btn-plan:hover,
+.plan-card.featured .btn-plan {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.plan-card.featured .btn-plan:hover {
+  background: var(--black);
+  color: var(--yellow);
+  border-color: var(--black);
+}
+
+.btn-plan {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.join-section {
+  background: #f4f4f4;
+  color: var(--text-dark);
+  padding: 90px 60px;
+}
+
+.join-layout {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.join-copy .section-title,
+.about-section .section-title {
+  color: var(--text-dark);
+}
+
+.join-copy p,
+.about-section p {
+  color: #666;
+  line-height: 1.8;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.join-form {
+  background: var(--white);
+  border: 1px solid var(--gray-mid);
+  border-radius: 8px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-row label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.form-row input,
+.form-row select {
+  border: 1px solid var(--gray-mid);
+  background: var(--gray-light);
+  color: var(--text-dark);
+  border-radius: 4px;
+  padding: 14px 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+  border-color: var(--yellow-dark);
+  background: var(--white);
+}
+
+.btn-submit-join {
+  background: var(--black);
+  color: var(--yellow);
+  border: none;
+  padding: 16px;
+  border-radius: 4px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.btn-submit-join:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.btn-submit-join:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.join-message {
+  display: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.join-message.success,
+.join-message.error {
+  display: block;
+}
+
+.join-message.success {
+  background: #f0fff4;
+  color: var(--success);
+  border: 1px solid #c6f6d5;
+}
+
+.join-message.error {
+  background: #fff5f5;
+  color: var(--danger);
+  border: 1px solid #fed7d7;
+}
+
+.about-section {
+  padding: 80px 60px;
+  background: var(--white);
+  color: var(--text-dark);
+  border-top: 1px solid var(--gray-mid);
+  text-align: center;
+}
+
+.about-section > div {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── Footer ── */
+.portal-footer {
+  background: #050505;
+  border-top: 1px solid #1a1a1a;
+  padding: 30px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portal-footer .logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px;
+  color: var(--yellow);
+  letter-spacing: 3px;
+}
+
+.portal-footer .logo span { color: var(--white); }
+
+.portal-footer p {
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+/* ── Animations ── */
+.hero-tag    { animation: fadeUp 0.5s ease 0.1s both; }
+.hero-title  { animation: fadeUp 0.5s ease 0.2s both; }
+.hero-desc   { animation: fadeUp 0.5s ease 0.3s both; }
+.hero-actions{ animation: fadeUp 0.5s ease 0.4s both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+  .navbar,
+  .plans-section,
+  .join-section,
+  .about-section,
+  .portal-footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero-title {
+    font-size: 64px;
+  }
+
+  .plans-grid,
+  .join-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}

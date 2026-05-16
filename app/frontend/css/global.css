@@ -1,0 +1,44 @@
+/* =============================
+   FitHub — Global Styles
+   ============================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black:       #0a0a0a;
+  --yellow:      #F5C518;
+  --yellow-dark: #d4a800;
+  --white:       #ffffff;
+  --gray-light:  #f4f4f4;
+  --gray-mid:    #e0e0e0;
+  --gray-dark:   #888888;
+  --text-dark:   #111111;
+  --text-muted:  #888888;
+  --danger:      #e53e3e;
+  --success:     #38a169;
+  --sidebar-w:   240px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--gray-light);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+input, select, textarea {
+  font-family: 'DM Sans', sans-serif;
+}

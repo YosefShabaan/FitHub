@@ -1,0 +1,280 @@
+/* =============================
+   FitHub — Login Page Styles
+   ============================= */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  background: var(--black);
+  overflow: hidden;
+}
+
+/* ── Left Side ── */
+.left {
+  flex: 1;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.left::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+  border-radius: 50%;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
+  bottom: 50px;
+  right: 50px;
+  border-radius: 50%;
+}
+
+.stripes {
+  position: absolute;
+  right: -40px;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 8px,
+    rgba(245,197,24,0.04) 8px,
+    rgba(245,197,24,0.04) 16px
+  );
+}
+
+.logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 64px;
+  color: var(--yellow);
+  letter-spacing: 4px;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease both;
+}
+
+.logo span { color: var(--white); }
+
+.tagline {
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.stats-row {
+  display: flex;
+  gap: 40px;
+  margin-top: 80px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-number {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 40px;
+  color: var(--yellow);
+  letter-spacing: 2px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.divider-line {
+  width: 60px;
+  height: 2px;
+  background: var(--yellow);
+  margin-top: 60px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.left-footer {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #555;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+
+/* ── Right Side ── */
+.right {
+  width: 480px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 50px;
+  position: relative;
+  animation: slideIn 0.5s ease;
+}
+
+.right::before {
+  content: 'ADMIN';
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gray-mid);
+}
+
+.form-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 42px;
+  color: var(--text-dark);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+.form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.form-group input {
+  border: 2px solid var(--gray-mid);
+  border-radius: 4px;
+  padding: 14px 16px;
+  font-size: 15px;
+  background: var(--gray-light);
+  color: var(--text-dark);
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: var(--yellow);
+  background: var(--white);
+}
+
+.form-group input::placeholder { color: #bbb; }
+
+.btn-login {
+  margin-top: 10px;
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 16px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  letter-spacing: 3px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-login:hover {
+  background: var(--yellow-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(245,197,24,0.3);
+}
+
+.btn-login:active { transform: translateY(0); }
+
+.btn-login.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.error-msg {
+  background: #fff0f0;
+  border: 1px solid #ffcccc;
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  display: none;
+}
+
+.error-msg.show { display: block; }
+
+.form-footer {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-mid);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-footer span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.role-badge {
+  background: var(--black);
+  color: var(--yellow);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+/* ── Animations ── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

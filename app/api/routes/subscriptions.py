@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 
-from app.db.database import SessionLocal
+from app.db.database import get_db
 from app.schemas.subscription import (
     SubscriptionCreate,
     SubscriptionUpdate,
@@ -19,13 +19,6 @@ from app.services.subscription_service import (
 from app.services.auth_service import get_current_user
 
 router = APIRouter()
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 # ✅ Get all subscriptions
@@ -94,4 +87,4 @@ def remove_subscription(
     result = delete_subscription(db, sub_id)
     if not result:
         raise HTTPException(status_code=404, detail="Subscription not found")
-     return result
+    return result

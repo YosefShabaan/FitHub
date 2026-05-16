@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitHub — Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/global.css"/>
+  <link rel="stylesheet" href="../css/login.css"/>
+</head>
+<body>
+
+  <!-- Left: Branding -->
+  <div class="left">
+    <div class="stripes"></div>
+
+    <div class="logo">Fit<span>Hub</span></div>
+    <div class="tagline">Gym Management System</div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Active</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Access</div>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+    <div class="left-footer">Professional Gym Management Platform</div>
+  </div>
+
+  <!-- Right: Login Form -->
+  <div class="right">
+    <div class="form-title">Welcome Back</div>
+    <div class="form-subtitle">Sign in to your admin panel</div>
+
+    <form class="form" onsubmit="handleLogin(event)">
+      <div id="error-msg" class="error-msg"></div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required/>
+      </div>
+
+      <button type="submit" class="btn-login" id="loginBtn">LOGIN</button>
+    </form>
+
+    <div class="form-footer">
+      <span>FitHub v1.0.0</span>
+      <div class="role-badge">ADMIN</div>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+</body>
+</html>
