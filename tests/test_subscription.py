@@ -2,10 +2,11 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from datetime import date
 
 from app.main import app
 from app.db.database import Base
-from app.api.routes.members import get_db
+from app.api.routes.subscriptions import get_db
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(
@@ -25,81 +26,74 @@ app.dependency_overrides[get_db] = override_get_db
 Base.metadata.create_all(bind=engine)
 client = TestClient(app)
 
-# ✅ Helper — Get Token
 def get_token():
     client.post("/auth/register", json={
-        "username": "memberuser",
+        "username": "subuser",
         "password": "testpass123"
     })
-    response = client.post("/auth/login", json={
-        "username": "memberuser",
+    res = client.post("/auth/login", json={
+        "username": "subuser",
         "password": "testpass123"
     })
-    return response.json()["access_token"]
+    return res.json()["access_token"]
+
+def create_test_member(token):
+    res = client.post("/members/", json={
+        "name": "Sub Member",
+        "phone": "01022222222"
+    }, headers={"Authorization": f"Bearer {token}"})
+    return res.json()["id"]
 
 
-def test_add_member():
+def test_create_subscription():
     token = get_token()
-    response = client.post("/members/", json={
-        "name": "Ahmed Ali",
-        "phone": "01012345678",
-        "email": "ahmed@test.com"
+    member_id = create_test_member(token)
+    response = client.post("/subscriptions/", json={
+        "member_id": member_id,
+        "plan": "monthly",
+        "start_date": str(date.today())
     }, headers={"Authorization": f"Bearer {token}"})
     assert response.status_code == 200
-    assert response.json()["name"] == "Ahmed Ali"
+    assert response.json()["status"] == "active"
 
 
-def test_get_all_members():
+def test_subscription_end_date_monthly():
     token = get_token()
-    response = client.get("/members/",
-        headers={"Authorization": f"Bearer {token}"}
-    )
-    assert response.status_code == 200
-    assert isinstance(response.json(), list)
-
-
-def test_search_member():
-    token = get_token()
-    response = client.get("/members/search?query=Ahmed",
-        headers={"Authorization": f"Bearer {token}"}
-    )
-    assert response.status_code == 200
-
-
-def test_update_member():
-    token = get_token()
-    # Add member first
-    add = client.post("/members/", json={
-        "name": "Sara Mohamed",
-        "phone": "01098765432"
+    member_id = create_test_member(token)
+    response = client.post("/subscriptions/", json={
+        "member_id": member_id,
+        "plan": "monthly",
+        "start_date": "2024-01-01"
     }, headers={"Authorization": f"Bearer {token}"})
-    member_id = add.json()["id"]
-    # Update
-    response = client.put(f"/members/{member_id}", json={
-        "name": "Sara Ahmed"
-    }, headers={"Authorization": f"Bearer {token}"})
-    assert response.status_code == 200
-    assert response.json()["name"] == "Sara Ahmed"
+    assert response.json()["end_date"] == "2024-01-31"
 
 
-def test_delete_member():
+def test_subscription_end_date_yearly():
     token = get_token()
-    # Add member first
-    add = client.post("/members/", json={
-        "name": "To Delete",
-        "phone": "01011111111"
+    member_id = create_test_member(token)
+    response = client.post("/subscriptions/", json={
+        "member_id": member_id,
+        "plan": "yearly",
+        "start_date": "2024-01-01"
     }, headers={"Authorization": f"Bearer {token}"})
-    member_id = add.json()["id"]
-    # Delete
-    response = client.delete(f"/members/{member_id}",
+    assert response.json()["end_date"] == "2024-12-31"
+
+
+def test_get_all_subscriptions():
+    token = get_token()
+    response = client.get("/subscriptions/",
         headers={"Authorization": f"Bearer {token}"}
     )
     assert response.status_code == 200
 
 
-def test_get_member_not_found():
+def test_dashboard_stats():
     token = get_token()
-    response = client.get("/members/99999",
+    response = client.get("/dashboard/stats",
         headers={"Authorization": f"Bearer {token}"}
     )
-    assert response.status_code == 404
+    assert response.status_code == 200
+    data = response.json()
+    assert "total_members" in data
+    assert "active_subscriptions" in data
+    assert "expired_subscriptions" in data
