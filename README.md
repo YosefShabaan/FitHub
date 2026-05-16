@@ -2,24 +2,6 @@
 
 Professional Gym Management System built with FastAPI, SQLAlchemy, and a static HTML/CSS/JS frontend.
 
-FitHub/
-├── app/
-│   ├── api/routes/       # API Endpoints
-│   │   ├── auth.py       → تسجيل دخول الأدمن + JWT
-│   │   ├── members.py    → CRUD للأعضاء
-│   │   ├── subscriptions.py → CRUD للاشتراكات
-│   │   ├── dashboard.py  → إحصائيات
-│   │   └── portal.py     → صفحة العضو العام
-│   ├── models/           # SQLAlchemy Models (User, Member, Subscription)
-│   ├── schemas/          # Pydantic Schemas
-│   ├── services/         # Business Logic
-│   ├── core/             # Config + Security (JWT, hashing)
-│   ├── db/               # Database setup
-│   └── frontend/         # HTML/CSS/JS ستاتيك
-├── tests/                # pytest tests
-└── docs/                 # Scrum + Specification docs
-
-
 ## Features
 
 - Public member portal with membership plan selection.
